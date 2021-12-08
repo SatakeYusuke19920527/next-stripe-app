@@ -1,0 +1,32 @@
+.container {
+  width: 100vw;
+  height: 10vh;
+  padding: 1em 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #62dafb;
+  background-color: #212329;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.loginbtn {
+  width: 7em;
+  height: 1.5em;
+  border-radius: 2em;
+  background-color: #62dafb;
+  cursor: pointer;
+  color: white;
+  display: -moz-box;
+  display: flex;
+  -moz-box-pack: center;
+  justify-content: center;
+  -moz-box-align: center;
+  align-items: center;
+  font-size: 1.6em;
+}
+
+.avatarArea {
+  margin: 0 1em;
+}
