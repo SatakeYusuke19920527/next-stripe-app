@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  border-radius: 25px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}

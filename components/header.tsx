@@ -43,8 +43,6 @@ const Header: NextPage = () => {
     await googleSignOut();
   };
 
-  console.log('🚀 ~ file: header.tsx ~ line 14 ~ userInfo', userInfo);
-
   return (
     <section className={styles.container}>
       <h1 className={styles.logo} onClick={movePage}>
