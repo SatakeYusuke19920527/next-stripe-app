@@ -3,9 +3,17 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import StripeCard from '../components/stripeCard';
+import { loadStripe } from '@stripe/stripe-js';
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
+);
 
 const Home: NextPage = () => {
   useEffect(() => {
+    stripePromiseRednder();
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
@@ -18,6 +26,15 @@ const Home: NextPage = () => {
       );
     }
   }, []);
+
+  const stripePromiseRednder = async () => {
+    const res = await stripePromise;
+    console.log(
+      '🚀 ~ file: index.tsx ~ line 43 ~ stripePromise',
+      res?.confirmAcssDebitPayment
+    );
+  };
+
   return (
     <div className={styles.container}>
       <Head>
