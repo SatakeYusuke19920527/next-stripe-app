@@ -42,7 +42,7 @@ const Header: NextPage = () => {
     await googleSignOut();
   };
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <h1 className={styles.logo} onClick={movePage}>
         logo
       </h1>
@@ -55,7 +55,7 @@ const Header: NextPage = () => {
           Login
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

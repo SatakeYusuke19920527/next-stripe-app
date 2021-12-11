@@ -1,14 +1,10 @@
 .container {
-  width: 100vw;
-  height: 10vh;
-  padding: 1em 4em;
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #62dafb;
-  background-color: #212329;
   box-sizing: border-box;
-  cursor: pointer;
+  justify-content: space-between;
+  padding: 1em 4em;
+  border-bottom: 1px solid #ccc;
 }
 
 .loginbtn {
@@ -25,8 +21,4 @@
   -moz-box-align: center;
   align-items: center;
   font-size: 1.6em;
-}
-
-.avatarArea {
-  margin: 0 1em;
 }
