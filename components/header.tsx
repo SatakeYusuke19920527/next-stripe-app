@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useAppSelector, useAppDispatch } from '../hooks/useRTK';
 import { auth } from '../lib/firebase';
 import { login, logout, selectUser } from '../features/userSlice';
+import Avatar from '@mui/material/Avatar';
 
 const Header: NextPage = () => {
   const router = useRouter();
@@ -41,6 +42,9 @@ const Header: NextPage = () => {
   const handleLogout = async () => {
     await googleSignOut();
   };
+
+  console.log('🚀 ~ file: header.tsx ~ line 14 ~ userInfo', userInfo);
+
   return (
     <section className={styles.container}>
       <h1 className={styles.logo} onClick={movePage}>
@@ -48,7 +52,7 @@ const Header: NextPage = () => {
       </h1>
       {userInfo.uid !== '' ? (
         <div className={styles.avatarArea} onClick={handleLogout}>
-          <h1>{userInfo.photoUrl}kkkk</h1>
+          <Avatar alt={userInfo.displayName} src={userInfo.photoUrl} />
         </div>
       ) : (
         <div className={styles.loginbtn} onClick={handleLogin}>

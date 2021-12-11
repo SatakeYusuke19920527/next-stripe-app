@@ -8,17 +8,4 @@
 }
 
 .loginbtn {
-  width: 7em;
-  height: 1.5em;
-  border-radius: 2em;
-  background-color: #62dafb;
-  cursor: pointer;
-  color: white;
-  display: -moz-box;
-  display: flex;
-  -moz-box-pack: center;
-  justify-content: center;
-  -moz-box-align: center;
-  align-items: center;
-  font-size: 1.6em;
 }
