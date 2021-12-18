@@ -1,6 +1,6 @@
 import firebase, { getApps,initializeApp } from 'firebase/app'
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged,signOut } from "firebase/auth"
-import { getFirestore,doc, setDoc  } from "firebase/firestore"
+import { collection, addDoc,getFirestore,doc, setDoc,serverTimestamp  } from "firebase/firestore"
 import { getStorage } from "firebase/storage"
 
 const firebaseConfig = {
@@ -86,6 +86,16 @@ export const registerUser = () => {
     console.log("User is not login yet.")
   }
 });
+}
+
+export const appointmentFunc = async (name: string,date:string) => {
+// Add a new document with a generated id.
+const docRef = await addDoc(collection(db, "appointment"), {
+  name: name,
+  appointDate: date,
+  timestamp: serverTimestamp()
+});
+console.log("Document written with ID: ", docRef.id);
 }
 
 export default firebase;

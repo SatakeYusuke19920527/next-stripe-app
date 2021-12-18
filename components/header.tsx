@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useAppSelector, useAppDispatch } from '../hooks/useRTK';
 import { auth } from '../lib/firebase';
 import { login, logout, selectUser } from '../features/userSlice';
-import Avatar from '@mui/material/Avatar';
 
 const Header: NextPage = () => {
   const router = useRouter();
@@ -48,9 +47,9 @@ const Header: NextPage = () => {
       <h1 className={styles.logo} onClick={movePage}>
         logo
       </h1>
-      {userInfo.uid !== '' ? (
+      {userInfo.photoUrl !== '' ? (
         <div className={styles.avatarArea} onClick={handleLogout}>
-          <Avatar alt={userInfo.displayName} src={userInfo.photoUrl} />
+          {userInfo.displayName}
         </div>
       ) : (
         <div className={styles.loginbtn} onClick={handleLogin}>
