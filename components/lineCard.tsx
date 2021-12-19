@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import styles from '../styles/Card.module.css';
 
 const lineCard = ({ name }: { name: string }) => {
