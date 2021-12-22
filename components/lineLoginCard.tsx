@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Card.module.css';
 import type Liff from '@line/liff';
-import { useAppSelector, useAppDispatch } from '../hooks/useRTK';
 import { lineLogin } from '../features/userSlice';
 
-const lineLoginCard = ({ name }: { name: string }) => {
-  const dispatch = useAppDispatch();
-  const [liff, setLiff] = useState<typeof Liff>();
+const lineLoginCard = ({ name, dispatch }: { name: string; dispatch: any }) => {
   const initLiff = async () => {
-    let unmounted = false;
     const liff = (await import('@line/liff')).default;
     console.log('import liff');
     await liff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! });
-    if (!unmounted) {
-      setLiff(liff);
-    }
     liff
       .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
       .then(async () => {

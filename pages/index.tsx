@@ -6,8 +6,10 @@ import StCard from '../components/stCard';
 import LineCard from '../components/lineCard';
 import LineLoginCard from '../components/lineLoginCard';
 import AppointCard from '../components/appointCard';
+import { useAppDispatch } from '../hooks/useRTK';
 
 const Home: NextPage = () => {
+  const dispatch = useAppDispatch();
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -39,7 +41,7 @@ const Home: NextPage = () => {
         <AppointCard name="appoint" />
       </main>
       <main className={styles.main}>
-        <LineLoginCard name="line login" />
+        <LineLoginCard name="line login" dispatch={dispatch} />
       </main>
     </div>
   );
