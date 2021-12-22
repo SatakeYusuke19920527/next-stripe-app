@@ -15,7 +15,7 @@ const lineLoginCard = ({ name, dispatch }: { name: string; dispatch: any }) => {
         const user = await liff.getProfile();
         dispatch(
           lineLogin({
-            uid: user.userId,
+            lineuid: user.userId,
             displayName: user.displayName,
             photoUrl: user.pictureUrl,
           })

@@ -7,7 +7,13 @@ type InitialStateType = {
 }
 
 const initialState:InitialStateType = {
-  user: { uid: "",email: "", displayName: "", photoUrl: "" }
+  user: {
+    uid: "",
+    email: "",
+    displayName: "",
+    photoUrl: "",
+    lineuid: ""
+  }
 }
 
 export const userSlice = createSlice({
@@ -18,7 +24,7 @@ export const userSlice = createSlice({
       state.user = action.payload
     },
     lineLogin: (state, action) => {
-      state.user.uid = action.payload.uid
+      state.user.lineuid = action.payload.lineuid
       state.user.displayName = action.payload.displayName
       state.user.photoUrl = action.payload.photoUrl
     },
