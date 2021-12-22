@@ -45,45 +45,66 @@ const LineLoginCard = ({ name, dispatch }: { name: string; dispatch: any }) => {
    * LINEで保持しているユーザー情報取得
    */
   const getUserInfo = async () => {
+    /* 追加: UserProfileをAlertで表示 */
     console.log(
       '🚀 ~ file: lineLoginCard.tsx ~ line 43 ~ getUserInfo ~ stliff',
       stliff
     );
     if (stliff) {
-      await stliff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! });
       stliff
-        .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
-        .then(async () => {
-          //ログインしていなければログインさせる
-          if (stliff.isLoggedIn() === false) stliff.login({});
-          const user = await stliff.getProfile();
-          console.log(
-            '🚀 ~ file: lineLoginCard.tsx ~ line 16 ~ .then ~ user',
-            user
-          );
-          dispatch(
-            lineLogin({
-              lineuid: user.userId,
-              displayName: user.displayName,
-              photoUrl: user.pictureUrl,
-            })
-          );
-          stliff
-            .getProfile()
-            .then((profile) => {
-              alert(JSON.stringify(profile));
-            })
-            .catch((error) => {
-              console.log(
-                '🚀 ~ file: lineLoginCard.tsx ~ line 48 ~ getUserInfo ~ error',
-                error
-              );
-            });
-        })
-        .catch((error) => {
-          console.log(error, '===');
+        .init({ liffId: process.env.REACT_APP_LIFF_ID as string })
+        .then(() => {
+          if (!stliff.isLoggedIn()) {
+            stliff.login({}); // ログインしていなければ最初にログインする
+          } else if (stliff.isInClient()) {
+            stliff
+              .getProfile() // ユーザ情報を取得する
+              .then((profile) => {
+                const userId: string = profile.userId;
+                const displayName: string = profile.displayName;
+                alert(`Name: ${displayName}, userId: ${userId}`);
+              })
+              .catch(function (error) {
+                window.alert('Error sending message: ' + error);
+              });
+          }
         });
     }
+    // if (stliff) {
+    //   await stliff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! });
+    //   stliff
+    //     .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
+    //     .then(async () => {
+    //       //ログインしていなければログインさせる
+    //       if (stliff.isLoggedIn() === false) stliff.login({});
+    //       const user = await stliff.getProfile();
+    //       console.log(
+    //         '🚀 ~ file: lineLoginCard.tsx ~ line 16 ~ .then ~ user',
+    //         user
+    //       );
+    //       dispatch(
+    //         lineLogin({
+    //           lineuid: user.userId,
+    //           displayName: user.displayName,
+    //           photoUrl: user.pictureUrl,
+    //         })
+    //       );
+    //       stliff
+    //         .getProfile()
+    //         .then((profile) => {
+    //           alert(JSON.stringify(profile));
+    //         })
+    //         .catch((error) => {
+    //           console.log(
+    //             '🚀 ~ file: lineLoginCard.tsx ~ line 48 ~ getUserInfo ~ error',
+    //             error
+    //           );
+    //         });
+    //     })
+    //     .catch((error) => {
+    //       console.log(error, '===');
+    //     });
+    // }
   };
   return (
     <section className={styles.card}>
