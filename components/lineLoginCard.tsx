@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/Card.module.css';
-import type Liff from '@line/liff';
 import { lineLogin } from '../features/userSlice';
 
 const lineLoginCard = ({ name, dispatch }: { name: string; dispatch: any }) => {
