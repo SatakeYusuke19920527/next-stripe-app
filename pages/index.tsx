@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import StCard from '../components/stCard';
 import LineCard from '../components/lineCard';
+import LineLoginCard from '../components/lineLoginCard';
 import AppointCard from '../components/appointCard';
 
 const Home: NextPage = () => {
@@ -36,6 +37,9 @@ const Home: NextPage = () => {
       </main>
       <main className={styles.main}>
         <AppointCard name="appoint" />
+      </main>
+      <main className={styles.main}>
+        <LineLoginCard name="line login" />
       </main>
     </div>
   );
