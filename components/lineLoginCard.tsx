@@ -44,22 +44,44 @@ const LineLoginCard = ({ name, dispatch }: { name: string; dispatch: any }) => {
   /**
    * LINEで保持しているユーザー情報取得
    */
-  const getUserInfo = () => {
+  const getUserInfo = async () => {
     console.log(
       '🚀 ~ file: lineLoginCard.tsx ~ line 43 ~ getUserInfo ~ stliff',
       stliff
     );
     if (stliff) {
+      await stliff.init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! });
       stliff
-        .getProfile()
-        .then((profile) => {
-          alert(JSON.stringify(profile));
+        .init({ liffId: process.env.NEXT_PUBLIC_LIFF_ID! })
+        .then(async () => {
+          //ログインしていなければログインさせる
+          if (stliff.isLoggedIn() === false) stliff.login({});
+          const user = await stliff.getProfile();
+          console.log(
+            '🚀 ~ file: lineLoginCard.tsx ~ line 16 ~ .then ~ user',
+            user
+          );
+          dispatch(
+            lineLogin({
+              lineuid: user.userId,
+              displayName: user.displayName,
+              photoUrl: user.pictureUrl,
+            })
+          );
+          stliff
+            .getProfile()
+            .then((profile) => {
+              alert(JSON.stringify(profile));
+            })
+            .catch((error) => {
+              console.log(
+                '🚀 ~ file: lineLoginCard.tsx ~ line 48 ~ getUserInfo ~ error',
+                error
+              );
+            });
         })
         .catch((error) => {
-          console.log(
-            '🚀 ~ file: lineLoginCard.tsx ~ line 48 ~ getUserInfo ~ error',
-            error
-          );
+          console.log(error, '===');
         });
     }
   };
