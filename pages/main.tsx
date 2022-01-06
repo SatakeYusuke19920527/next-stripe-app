@@ -2,10 +2,6 @@ import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import StCard from '../components/stCard';
-import LineCard from '../components/lineCard';
-import LineLoginCard from '../components/lineLoginCard';
-import AppointCard from '../components/appointCard';
 import { useAppDispatch } from '../hooks/useRTK';
 
 const Main: NextPage = () => {
